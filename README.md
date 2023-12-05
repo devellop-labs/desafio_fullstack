@@ -1,5 +1,5 @@
 
- <img src="https://devellop.com.br/static/logo.png" width="200" height="102"/>
+ <img src="https://devellop.com.br/static/logo.png" width="200" height="102" style="filter: brightness(0) invert(1);"/>
 
 # Desafio - Desenvolvedor Fullstack Pleno
 Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnica como candidato à vaga de Desenvolvedor Fullstack Pleno.
