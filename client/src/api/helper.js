@@ -252,6 +252,49 @@ const getUserImage = (image) => {
     return null;
 }
 
+const getLevelsConfiguration = (lvName) => {
+    const lvls = [
+        { Name: "1", ExpLimit: 100, Permissions: "Permissions" },
+        { Name: "2", ExpLimit: 1000, Permissions: "Permissions" },
+        { Name: "3", ExpLimit: 1900, Permissions: "Permissions" },
+        { Name: "4", ExpLimit: 2800, Permissions: "Permissions" },
+        { Name: "5", ExpLimit: 3700, Permissions: "Permissions" },
+        { Name: "6", ExpLimit: 4600, Permissions: "Permissions" },
+        { Name: "7", ExpLimit: 5500, Permissions: "Permissions" },
+        { Name: "8", ExpLimit: 6400, Permissions: "Permissions" },
+        { Name: "9", ExpLimit: 7300, Permissions: "Permissions" },
+        { Name: "10", ExpLimit: 8200, Permissions: "Permissions" },
+        { Name: "11", ExpLimit: 12300, Permissions: "Permissions" },
+        { Name: "12", ExpLimit: 18500, Permissions: "Permissions" },
+        { Name: "13", ExpLimit: 30000, Permissions: "Permissions" },
+        { Name: "14", ExpLimit: 42000, Permissions: "Permissions" },
+        { Name: "15", ExpLimit: 62000, Permissions: "Permissions" },
+        { Name: "16", ExpLimit: 100000, Permissions: "Permissions" },
+        { Name: "17", ExpLimit: 140000, Permissions: "Permissions" },
+        { Name: "18", ExpLimit: 210000, Permissions: "Permissions" },
+        { Name: "19", ExpLimit: 315000, Permissions: "Permissions" },
+        { Name: "20", ExpLimit: 475000, Permissions: "Permissions" },
+        { Name: "21", ExpLimit: 950000, Permissions: "Permissions" },
+        { Name: "22", ExpLimit: 2000000, Permissions: "Permissions" },
+        { Name: "23", ExpLimit: 4000000, Permissions: "Permissions" },
+        { Name: "24", ExpLimit: 8000000, Permissions: "Permissions" },
+        { Name: "25", ExpLimit: 15000000, Permissions: "Permissions" },
+        { Name: "26", ExpLimit: 45000000, Permissions: "Permissions" },
+        { Name: "27", ExpLimit: 135000000, Permissions: "Permissions" },
+        { Name: "28", ExpLimit: 400500000, Permissions: "Permissions" },
+        { Name: "29", ExpLimit: 1000000000, Permissions: "Permissions" },
+        { Name: "30", ExpLimit: 4000000000, Permissions: "Permissions" },
+    ]
+
+    const desireLvConfig = lvls.find(lv => lv.Name === lvName);
+
+    if (!desireLvConfig) {
+        return "Level não encontrado";
+    }
+
+    return desireLvConfig;
+}
+
 export {
     get,
     post,
@@ -278,4 +321,5 @@ export {
     refreshWebsite,
     getUserInfo,
     getUserImage,
+    getLevelsConfiguration,
 };

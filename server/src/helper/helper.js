@@ -4,8 +4,12 @@ const bcrypt = require('bcryptjs');
 const { Storage } = require('@google-cloud/storage');
 const { v4: uuidv4 } = require('uuid');
 const fs = require('fs');
+const datastoreCredential = require("../../database/datastore-credentials.json");
 
-const storage = new Storage();
+const storage = new Storage({
+    projectId: "devellop-labs",
+    credentials: datastoreCredential,
+});
 const secretKey = "c3a1bac02ae0f0d8e95a38dc657ab3cbf1e175b716eb43d60147f49dfc1e78b9";
 
 const createJWT = (userData) => {
