@@ -125,7 +125,7 @@ export default function EditPasswordModal({ openEditPasswordModal, setOpenEditPa
     }
   };
 
-  const renderPasswordInput = (label, prop) => (
+  const renderPasswordInput = (label = "", prop = "") => (
     <TextField
       margin="normal"
       required

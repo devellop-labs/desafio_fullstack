@@ -1,7 +1,7 @@
 import { Box } from '@mui/material';
 import React from 'react';
 
-const TabPanel = (props) => {
+const TabPanel = (props = {}) => {
   const { children, value, index, ...other } = props;
   return (
     <div

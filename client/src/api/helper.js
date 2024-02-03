@@ -188,6 +188,10 @@ const encodeToBase64 = (str) => {
 const getOursPath = () => {
     return [
         "/",
+        "/blog",
+        "/profile",
+        "/profile/myposts",
+        "/profile/historic",
     ]
 }
 
@@ -213,8 +217,10 @@ const showToast = (toast, message, type, options = {}, ignoreCSS) => {
     if (!ignoreCSS) {
         defaultOptions.style = customStyle;
     }
-
-    toast.dismiss();
+    //TODO: IMPROVE
+    // if (toast.isActive()) {
+    //     toast.dismiss();
+    // }
 
     switch (type) {
         case "success":

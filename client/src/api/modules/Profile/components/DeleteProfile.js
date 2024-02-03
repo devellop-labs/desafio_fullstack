@@ -5,7 +5,7 @@ import { refreshWebsite, showToast } from '../../../helper';
 import { toast } from 'react-toastify';
 import DeleteProfileFeedback from './DeleteProfileFeedback';
 
-const DeleteProfile = ({ username }) => {
+const DeleteProfile = ({ username = "" }) => {
   const [openDeleteConfirmation, setOpenDeleteConfirmation] = useState(false);
   const [openDeleteFeedback, setDeleteFeedback] = useState(false);
   const [feedback, setFeedback] = useState("");

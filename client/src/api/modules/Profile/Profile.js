@@ -6,7 +6,7 @@ import Header from '../Blog/components/Header';
 import TabPanel from './components/TabPanel';
 import AccountInformation from './components/AccountInformation';
 
-const Profile = ({ tabIndex }) => {
+const Profile = ({ tabIndex = 0 }) => {
   const [updatedUser, setUpdatedUser] = useState(false);
   const [tabValue, setTabValue] = useState(tabIndex);
   const navigate = useNavigate();
