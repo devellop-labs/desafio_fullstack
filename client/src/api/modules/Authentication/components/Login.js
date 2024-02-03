@@ -30,12 +30,12 @@ const Login = ({ onSwitch }) => {
   const navigate = useNavigate();
 
   const addGameURLPath = () => {
-    navigate('/game');
+    navigate('/blog');
   }
 
   useEffect(() => {
     checkCookiesPermission((res) => {
-      if (!res) {
+      if (!res && res !== undefined) {
         addGameURLPath();
       }
     });

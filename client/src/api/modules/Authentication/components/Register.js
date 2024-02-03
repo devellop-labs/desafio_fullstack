@@ -45,7 +45,7 @@ const Register = ({ onSwitch }) => {
     });
 
     if (response.includes("successful")) {
-      navigate("/game")
+      navigate("/blog")
     }
 
     if (response.includes("Username")) {
