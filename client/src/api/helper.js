@@ -1,8 +1,6 @@
 import axios from "axios";
 import axiosCookieJarSupport from 'axios-cookiejar-support';
 import { CookieJar, MemoryCookieStore } from 'tough-cookie';
-import CookiesService from "./services/Cookies.service";
-import UserService from "./services/User.service";
 
 axiosCookieJarSupport(axios);
 
@@ -42,8 +40,11 @@ const getCurrentPathURL = () => {
     return url.pathname;
 }
 
-const checkCookiesPermission = (cb) => {
-    CookiesService.check()
+const checkCookiesPermission = async (cb) => {
+    const CookiesService = (await import('./services/Cookies.service')).default;
+
+
+    return CookiesService.check()
         .then((res) => {
             cb(res?.Unauthorized);
         })
@@ -108,6 +109,8 @@ const resetLocalStorage = () => {
 }
 
 const resetUserCookies = async () => {
+    const CookiesService = (await import('./services/Cookies.service')).default;
+
     await CookiesService.reset();
 
     return { Ok: "X" };
@@ -235,7 +238,9 @@ const refreshWebsite = () => {
     window.location.reload(true);
 }
 
-const getUserInfo = () => {
+const getUserInfo = async () => {
+    const UserService = (await import('./services/User.service')).default;
+
     return UserService.getUserInfo()
 }
 
