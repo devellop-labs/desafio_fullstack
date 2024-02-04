@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import Header from '../LeagueOfLegendGame/components/Header';
+import Header from '../Blog/components/Header';
 import { Container, Typography, Box, Button } from '@mui/material';
 import { checkCookiesPermission, getLastURLPath } from '../../helper';
 import { useNavigate } from 'react-router-dom';
