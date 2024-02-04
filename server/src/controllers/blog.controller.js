@@ -35,9 +35,7 @@ const editPost = async (req, res) => {
 
 const getPosts = async (req, res) => {
   try {
-    const { User } = req.body;
-
-    const posts  = await BlogService.getPosts(User);
+    const posts = await BlogService.getPosts();
 
     res.status(200).json(posts);
   } catch (error) {

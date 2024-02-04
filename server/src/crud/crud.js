@@ -115,12 +115,17 @@ const get = async (user, kind) => {
         const query = datastore.createQuery(namespace, kind);
 
         const [entities] = await datastore.runQuery(query);
-        return entities;
+        
+        const results = entities.map(entity => {
+            const id = entity[datastore.KEY].id;
+            return { ...entity, id };
+        });
+
+        return results;
     } catch (error) {
         return helper.buildErrorReturn(error);
     }
 };
-
 const update = async (user, kind, data) => {
     try {
         const namespace = user.Namespace;

@@ -1,11 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { checkCookiesPermission, getLastURLPath, getOursPath, showToast } from '../../helper';
 import Header from './components/Header';
-import BlogBody from "./components/BlogBody";
+import BlogFeed from './components/BlogFeed';
 
 const Blog = () => {
+    const [newPost, setNewPost] = useState(false);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -52,8 +53,8 @@ const Blog = () => {
                 }`}
             </style>
             <ToastContainer />
-            <Header />
-            <BlogBody/>
+            <Header setNewPost={setNewPost} newPost={newPost}/>
+            <BlogFeed newPost={newPost}/>
             {/* <Footer /> Improve footer */}
         </div>
     );

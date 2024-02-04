@@ -7,7 +7,7 @@ import Profile from './Profile';
 import Logo from './Logo';
 import { getUserInfo } from '../../../helper';
 
-function Header({ updatedUser }) {
+function Header({ updatedUser, setNewPost, newPost }) {
   const [userInfo, setUserInfo] = useState({});
 
   useEffect(() => {
@@ -32,7 +32,7 @@ function Header({ updatedUser }) {
           <div style={sideBySideDivStyle}>
             <Notification />
             <Profile userImage={userInfo.StoredImageFileName}/>
-            <PostBlog />
+            <PostBlog setNewPost={setNewPost} newPost={newPost}/>
           </div>
         </Toolbar>
       </AppBar>

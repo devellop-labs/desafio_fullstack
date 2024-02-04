@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { showToast } from '../../../helper';
 import BlogService from '../../../services/Blog.service';
 
-const BlogPostModal = ({ showModal, setShowModal }) => {
+const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
@@ -59,6 +59,7 @@ const BlogPostModal = ({ showModal, setShowModal }) => {
 
     await BlogService.createPost(formData);
     setShowModal(false);
+    setNewPost(!newPost);
     showToast(toast, "Post criado com sucesso!", "success");
   };
 

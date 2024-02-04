@@ -8,6 +8,10 @@ class BlogService extends BaseService {
     createPost(data) {
         return this.post("post_blog", data);
     }
+
+    getPosts() {
+        return this.get("get_posts")
+    }
   }
   
   export default Object.freeze(new BlogService());
