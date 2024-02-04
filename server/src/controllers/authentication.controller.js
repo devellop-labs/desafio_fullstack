@@ -7,12 +7,12 @@ const signUpController = async (req, res) => {
 
         const result = await AuthenticationService.signUpService(Username, Email, Password);
 
-        if (result) {
+        if (result) { //set cookies as None and true is not 100% safe.
             res.cookie(jwtInB64, result, {
                 httpOnly: true,
-                secure: false,
+                secure: true,
                 maxAge: 3600000,
-                sameSite: 'strict'
+                sameSite: "None"
             });
         }
         
@@ -31,9 +31,9 @@ const signInController = async (req, res) => {
         if (result) {
             res.cookie(jwtInB64, result, {
                 httpOnly: true,
-                secure: false,
+                secure: true,
                 maxAge: 3600000,
-                sameSite: 'strict'
+                sameSite: "None"
             });
         }
 
