@@ -32,9 +32,9 @@ const updateUserInformation = async (req, res) => {
 
     res.cookie(jwtInB64, jwt, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       maxAge: 3600000,
-      sameSite: 'strict',
+      sameSite: "None"
     });
 
     res.status(200).send(response);
@@ -67,9 +67,9 @@ const deleteUserImage = async (req, res) => {
 
     res.cookie(jwtInB64, jwt, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       maxAge: 3600000,
-      sameSite: 'strict',
+      sameSite: "None"
     });
 
     res.status(200).send(response);
@@ -90,9 +90,9 @@ const deleteUserAccount = async (req, res) => {
 
     res.cookie(jwtInB64, jwt, {
       httpOnly: true,
-      secure: false,
-      maxAge: 600000,
-      sameSite: 'strict',
+      secure: true,
+      maxAge: 3600000,
+      sameSite: "None"
     });
 
     res.status(200).send(response);
