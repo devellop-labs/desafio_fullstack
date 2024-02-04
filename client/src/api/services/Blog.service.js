@@ -12,6 +12,14 @@ class BlogService extends BaseService {
     getPosts() {
         return this.get("get_posts")
     }
+
+    deletePost(id) {
+        return this.delete(`delete_post/${id}`)
+    }
+
+    editPost(data) {
+        return this.put("edit_post", data)
+    }
   }
   
   export default Object.freeze(new BlogService());

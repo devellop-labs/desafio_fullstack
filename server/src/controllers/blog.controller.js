@@ -22,14 +22,20 @@ const addNewPost = async (req, res) => {
 
 const editPost = async (req, res) => {
   try {
-    const { User, postId, newInfo } = req.body;
+    const { User, Title, Description, PostId } = req.body;
 
-    await BlogService.editPost(User);
+    let image = null;
 
-    res.status(200).send('Post Updated');
+    if (req.file) {
+      image = req.file.buffer;
+      mimetype = req.file.mimetype;
+    }
+
+    await BlogService.editPost(User, Title, Description, image, PostId);
+
+    res.status(200).send('Post updated');
   } catch (error) {
     res.status(500).send(error.message);
-
   }
 }
 
@@ -59,11 +65,12 @@ const getPostById = async (req, res) => {
 
 const deletePost = async (req, res) => {
   try {
-    const { User, PostId} = req.body;
+    const { User } = req.body;
+    const { id } = req.params
 
-    const posts  = await BlogService.deletePost(User);
+    await BlogService.deletePost(User, id);
 
-    res.status(200).json(posts);
+    res.status(200).send("Deleted!");
   } catch (error) {
     res.status(500).send(error.message);
 

@@ -17,15 +17,31 @@ const addNewPost = async (baseUser, title, description, image) => {
   return response;
 }
 
-const editPost = (baseUser) => {
+const editPost = async (baseUser, title, description, image, postId) => {
+  const postData = await crud.getById({ id: -1 }, "Posts", postId);
 
+  if (postData.z_Create_UserId != baseUser.id) {
+    return { Unauthorized: "X" }
+  }
+
+  const imageURL = await saveUserImage(baseUser, image); //sometimes creating unnecessary image on storage
+
+  const updatedPostData = {
+    ...postData,
+    Title: title,
+    Description: description,
+    PostImage: imageURL
+  }
+
+  await crud.update({id: -1}, "Posts", updatedPostData);
 }
 
 const getPosts = async () => {
-  const posts = await crud.get({id: -1}, "Posts");
+  const posts = await crud.get({ id: -1 }, "Posts")
+    .then(res => res.filter(post => !post.Deleted));
 
   const postsWithUserDataPromises = posts.map(async (post) => {
-    const userThatCreatedPost = await crud.getById({id: -1}, "Users", post.z_Create_UserId);
+    const userThatCreatedPost = await crud.getById({ id: -1 }, "Users", post.z_Create_UserId);
 
     const postWithUser = {
       ...post,
@@ -53,8 +69,19 @@ const getPostById = (baseUser) => {
 
 }
 
-const deletePost = (baseUser) => {
+const deletePost = async (baseUser, postId) => {
+  const postData = await crud.getById({ id: -1 }, "Posts", postId);
 
+  if (postData.z_Create_UserId != baseUser.id) {
+    return { Unauthorized: "X" }
+  }
+
+  const deletedPostData = {
+    ...postData,
+    Deleted: "X",
+  }
+
+  await crud.update({ id: -1 }, "Posts", deletedPostData);
 }
 
 

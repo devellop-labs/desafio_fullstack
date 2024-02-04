@@ -1,18 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import BlogBody from './BlogBody';
 import BlogService from '../../../services/Blog.service';
-import { getUserImage } from '../../../helper';
+import { getUserImage, getUserInfo } from '../../../helper';
 import { Box, Container } from '@mui/material';
 
-const BlogFeed = ({newPost}) => {
+const BlogFeed = ({ newPost, setNewPost }) => {
   const [posts, setPosts] = useState([]);
+  const [userId, setUserId] = useState(0);
 
   useEffect(() => {
     BlogService.getPosts()
       .then(res => {
         setPosts(res);
       })
-  }, [newPost])
+  }, [newPost]);
+
+  useEffect(() => {
+    getUserInfo()
+      .then(res => setUserId(res.id))
+  }, []);
+
   //TODO: with more time could add a like intereaction, or a smart feed.
   return (
     <Box
@@ -41,6 +48,10 @@ const BlogFeed = ({newPost}) => {
             userExhibitionName={post.ExhibitionName}
             postCreateDate={post.z_Inserted_Date}
             postId={post.id}
+            postOwner={post.z_Create_UserId}
+            userId={userId}
+            setNewPost={setNewPost}
+            newPost={newPost}
           />
         </Box>
       ))}

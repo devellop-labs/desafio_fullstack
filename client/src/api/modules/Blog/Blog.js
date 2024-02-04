@@ -54,7 +54,7 @@ const Blog = () => {
             </style>
             <ToastContainer />
             <Header setNewPost={setNewPost} newPost={newPost}/>
-            <BlogFeed newPost={newPost}/>
+            <BlogFeed newPost={newPost} setNewPost={setNewPost}/>
             {/* <Footer /> Improve footer */}
         </div>
     );

@@ -6,7 +6,7 @@ function PostBlog({setNewPost, newPost}) {
   const [showModal, setShowModal] = useState(false);
   return (
     <div>
-      <BlogPostModal showModal={showModal} setShowModal={setShowModal} setNewPost={setNewPost} newPost={newPost} />
+      <BlogPostModal showModal={showModal} setShowModal={setShowModal} setNewPost={setNewPost} newPost={newPost}/>
       <Button color="inherit" onClick={() => setShowModal(true)} style={{
         backgroundColor: "#ff5a00",
         width: "105px",

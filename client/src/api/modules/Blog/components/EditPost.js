@@ -5,11 +5,11 @@ import { toast } from 'react-toastify';
 import { showToast } from '../../../helper';
 import BlogService from '../../../services/Blog.service';
 
-const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
+const EditPostModal = ({ showModal, setShowModal, renderPosts, defaultTitle, defaultDescription, defaultImage, postId }) => {
+  const [title, setTitle] = useState(defaultTitle);
+  const [description, setDescription] = useState(defaultDescription);
   const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState('');
+  const [imagePreview, setImagePreview] = useState(defaultImage);
 
   const dialogStyles = {
     backgroundColor: '#1E1E30',
@@ -20,7 +20,6 @@ const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
 
   const handleClose = () => {
     setShowModal(false);
-    showToast(toast, "Blog post creation cancelled", "info");
   };
 
   const convertToBuffer = async (file) => {
@@ -32,7 +31,7 @@ const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
     });
   };
 
-  const handleSave = async () => {
+  const handleEdit = async () => {
     if(!title) {
       showToast(toast, "É necessário ter um título!", "warn");
       return;
@@ -51,18 +50,19 @@ const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
     const formData = new FormData();
     formData.append('Title', title);
     formData.append('Description', description);
+    formData.append('PostId', postId);
 
     const buffer = await convertToBuffer(image);
     formData.append('Image', new Blob([buffer]));
 
-    await BlogService.createPost(formData);
+    await BlogService.editPost(formData);
     setShowModal(false);
-    setNewPost(!newPost);
     setTitle("");
     setDescription("");
     setImage("");
     setImagePreview("");
-    showToast(toast, "Post criado com sucesso!", "success");
+    renderPosts()
+    showToast(toast, "Post atualizado com sucesso!", "success");
   };
 
   const handleImageChange = (event) => {
@@ -77,7 +77,7 @@ const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
     <Dialog open={showModal} onClose={handleClose} PaperProps={{ style: dialogStyles }}>
       <DialogTitle>
         <Typography variant="h6" style={{ color: 'white' }}>
-          Adicionar Post
+          Editar post
         </Typography>
       </DialogTitle>
       <DialogContent>
@@ -131,14 +131,14 @@ const BlogPostModal = ({ showModal, setShowModal, setNewPost, newPost }) => {
       </DialogContent>
       <DialogActions style={dialogStyles}>
         <Button onClick={handleClose}>Cancelar</Button>
-        <Button onClick={handleSave} style={{
+        <Button onClick={handleEdit} style={{
           color: 'white',
           backgroundColor: '#4CAF50',
           borderRadius: '4px',
-        }}>Salvar</Button>
+        }}>Editar</Button>
       </DialogActions>
     </Dialog>
   );
 };
 
-export default BlogPostModal;
+export default EditPostModal;
