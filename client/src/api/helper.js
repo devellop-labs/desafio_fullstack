@@ -8,7 +8,7 @@ const memoryJar = new MemoryCookieStore();
 const cookieJar = new CookieJar();
 
 const api = axios.create({
-    baseURL: "https://devellop-labs.rj.r.appspot.com",//"http://localhost:3002",
+    baseURL: "http://localhost:3002",
     withCredentials: true,
     jar: cookieJar,
 });
