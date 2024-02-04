@@ -30,16 +30,14 @@ const BlogBody = ({ title, description, imageUrl, userImageUrl, userExhibitionNa
   };
 
   const handleEdit = () => {
-    // Handle Edit Post Logic
     setShowEditPostModal(true);
     handleClose();
   };
 
   const handleDelete = async (postId) => {
-    console.log(postId, "postId")
     await BlogService.deletePost(postId)
+    renderPosts();
     handleClose();
-    renderPosts()
     showToast(toast, "Post deletado!", "success");
   };
 
