@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import { checkCookiesPermission, getLastURLPath, getOursPath, showToast } from '../../helper';
 import Header from './components/Header';
+import BlogBody from "./components/BlogBody";
 
 const Blog = () => {
     const navigate = useNavigate();
@@ -52,6 +53,7 @@ const Blog = () => {
             </style>
             <ToastContainer />
             <Header />
+            <BlogBody/>
             {/* <Footer /> Improve footer */}
         </div>
     );

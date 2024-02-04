@@ -1,10 +1,13 @@
 import { Button } from '@mui/material';
-import React from 'react';
+import React, { useState } from 'react';
+import BlogPostModal from './BlogPostModal';
 
 function PostBlog() {
+  const [showModal, setShowModal] = useState(false);
   return (
     <div>
-      <Button color="inherit" onClick={() => {}} style={{
+      <BlogPostModal showModal={showModal} setShowModal={setShowModal}/>
+      <Button color="inherit" onClick={() => setShowModal(true)} style={{
         backgroundColor: "#ff5a00",
         width: "105px",
         height: "40px",
