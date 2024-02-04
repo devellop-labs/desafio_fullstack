@@ -50,15 +50,6 @@ Com a aplicação rodando, ela estará vinculada ao Datastore do projeto. Acesse
 - **Permissões**: Se encontrar erros de permissão, verifique as configurações de segurança do seu sistema e do projeto.
 - **Dependências**: Caso ocorram problemas com as dependências, tente limpar o cache do npm e reinstalá-las.
 
-## Contribuição
-Contribuições para o projeto são bem-vindas. Consulte as 'issues' abertas ou crie uma nova para discutir as mudanças desejadas.
-
-## Licença
-Este projeto está sob [inserir tipo de licença aqui].
-
-## Contato
-Para mais informações ou suporte, entre em contato através de [inserir meio de contato aqui].
-
 ---
 
 *Este README foi gerado para facilitar a configuração e uso do projeto.*
