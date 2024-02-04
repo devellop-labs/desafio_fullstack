@@ -83,6 +83,7 @@ const Login = ({ onSwitch }) => {
       showToast(toast, "Senha incorreta!", "error", {}, "X");
     }
   };
+  
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
