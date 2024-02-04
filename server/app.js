@@ -9,7 +9,7 @@ const port = process.env.PORT || 3002;
 const app = express();
 const router = express.Router();
 
-const allowedOrigin = 'http://localhost:3000';
+const allowedOrigin = "https://yagoayala.github.io/desafio_fullstack";//'http://localhost:3000';
 
 const corsOptions = {
   origin: allowedOrigin,
