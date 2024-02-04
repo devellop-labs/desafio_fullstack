@@ -50,6 +50,19 @@ const getPosts = async (req, res) => {
   }
 }
 
+const getPostsByUser = async (req, res) => {
+  try {
+    const { User } = req.body;
+
+    const posts = await BlogService.getPosts(User);
+
+    res.status(200).json(posts);
+  } catch (error) {
+    res.status(500).send(error.message);
+
+  }
+}
+
 const getPostById = async (req, res) => {
   try {
     const { User, Id } = req.body;
@@ -83,4 +96,5 @@ module.exports = {
   getPosts,
   getPostById,
   deletePost,
+  getPostsByUser,
 }

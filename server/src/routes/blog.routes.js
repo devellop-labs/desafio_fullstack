@@ -8,6 +8,7 @@ const upload = multer({ storage: multer.memoryStorage() });
 router.post("/post_blog", upload.single('Image'), verifyTokenMiddleware, BlogService.addNewPost);
 router.put("/edit_post", upload.single('Image'), verifyTokenMiddleware, BlogService.editPost);
 router.get("/get_posts", verifyTokenMiddleware, BlogService.getPosts);
+router.get("/get_posts_by_user", verifyTokenMiddleware, BlogService.getPostsByUser);
 router.get("/get_post_id", verifyTokenMiddleware, BlogService.getPostById);
 router.delete("/delete_post/:id", verifyTokenMiddleware, BlogService.deletePost);
 

@@ -13,6 +13,10 @@ class BlogService extends BaseService {
         return this.get("get_posts")
     }
 
+    getPostsByUser() {
+        return this.get("get_posts_by_user")
+    }
+
     deletePost(id) {
         return this.delete(`delete_post/${id}`)
     }

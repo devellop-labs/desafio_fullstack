@@ -1,4 +1,5 @@
 const crud = require("../crud/crud");
+const CONST = require("../helper/constants");
 const { saveUserImage } = require("../helper/helper");
 
 const addNewPost = async (baseUser, title, description, image) => {
@@ -33,15 +34,27 @@ const editPost = async (baseUser, title, description, image, postId) => {
     PostImage: imageURL
   }
 
-  await crud.update({id: -1}, "Posts", updatedPostData);
+  await crud.update({ id: -1 }, "Posts", updatedPostData);
 }
 
-const getPosts = async () => {
-  const posts = await crud.get({ id: -1 }, "Posts")
+const getPosts = async (baseUser) => {
+  const filters = [];
+
+  if (baseUser) {
+    const filter = {
+      [CONST.Filter.Property]: "z_Create_UserId",
+      [CONST.Filter.Operator]: CONST.Filter.Operators.Equal,
+      [CONST.Filter.Value]: baseUser.id,
+    };
+
+    filters.push(filter)
+  }
+
+  const posts = await crud.getByFilter({ id: -1 }, "Posts", filters)
     .then(res => res.filter(post => !post.Deleted));
 
   const postsWithUserDataPromises = posts.map(async (post) => {
-    const userThatCreatedPost = await crud.getById({ id: -1 }, "Users", post.z_Create_UserId);
+    const userThatCreatedPost = await crud.getById({ id: -1 }, "Users", post.z_Create_UserId); //sometimes is not necessary do this request, just get from jwt...
 
     const postWithUser = {
       ...post,

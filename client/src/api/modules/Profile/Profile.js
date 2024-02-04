@@ -5,8 +5,10 @@ import { Tabs, Tab, Box } from '@mui/material';
 import Header from '../Blog/components/Header';
 import TabPanel from './components/TabPanel';
 import AccountInformation from './components/AccountInformation';
+import BlogFeed from '../Blog/components/BlogFeed';
 
 const Profile = ({ tabIndex = 0 }) => {
+  const [newPost, setNewPost] = useState(false);
   const [updatedUser, setUpdatedUser] = useState(false);
   const [tabValue, setTabValue] = useState(tabIndex);
   const navigate = useNavigate();
@@ -67,7 +69,7 @@ const Profile = ({ tabIndex = 0 }) => {
                     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Consistent font */
                 }`}
       </style>
-      <Header updatedUser={updatedUser}/>
+      <Header updatedUser={updatedUser} />
       <Box sx={{ width: '100%' }}>
         <Tabs
           value={tabValue}
@@ -90,11 +92,13 @@ const Profile = ({ tabIndex = 0 }) => {
           <Tab label="Histórico" sx={{ color: 'gray', marginRight: '20px' }} />
         </Tabs>
         <TabPanel value={tabValue} index={0}>
-          <AccountInformation setUpdatedUser={setUpdatedUser} updatedUser={updatedUser}/>
+          <AccountInformation setUpdatedUser={setUpdatedUser} updatedUser={updatedUser} />
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
+          <BlogFeed newPost={newPost} setNewPost={setNewPost} filterPostByUser={"X"}/>
         </TabPanel>
         <TabPanel value={tabValue} index={2}>
+          {/* Maybe add your history of interactions, likes, comments, etc... */}
         </TabPanel>
       </Box>
     </div>

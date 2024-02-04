@@ -4,15 +4,22 @@ import BlogService from '../../../services/Blog.service';
 import { getUserImage, getUserInfo } from '../../../helper';
 import { Box, Container } from '@mui/material';
 
-const BlogFeed = ({ newPost, setNewPost }) => {
+const BlogFeed = ({ newPost, setNewPost, filterPostByUser }) => {
   const [posts, setPosts] = useState([]);
   const [userId, setUserId] = useState(0);
 
   useEffect(() => {
-    BlogService.getPosts()
+    if (filterPostByUser) {
+      BlogService.getPostsByUser()
       .then(res => {
         setPosts(res);
       })
+    } else {
+      BlogService.getPosts()
+        .then(res => {
+          setPosts(res);
+        })
+    }
   }, [newPost]);
 
   useEffect(() => {
