@@ -1,49 +1,64 @@
 
- <img src="https://devellop.com.br/static/logo.png" width="200" height="102" style="-webkit-filter: brightness(0) invert(1); filter: brightness(0) invert(1);"/>
+# Nome do Projeto
 
-# Desafio - Desenvolvedor Fullstack Pleno
-Seja bem-vindo! Este desafio foi projetado para avaliar a sua capacidade técnica como candidato à vaga de Desenvolvedor Fullstack Pleno.
+## Visão Geral
+Este projeto é uma aplicação web robusta, integrando uma interface de usuário interativa com um backend eficiente. Construído com tecnologias modernas, o projeto oferece uma experiência de usuário suave e uma arquitetura confiável.
 
-## Instruções
-- Faça um fork deste repositório;
-- Utilize alguma das tecnologias (front-end e back-end) informadas na proposta desse desafio;
-- Crie um passo a passo de como rodar a sua aplicação;
-- Após finalizar, submeta um pull request com um comentário informando o seu e-mail de contato e aguarde nossa avaliação.
+## Pré-requisitos
+Antes de iniciar, é importante ler a documentação detalhada do projeto disponível [aqui](https://docs.google.com/document/d/1-o-MxRqoiSyp3llrV5k0_8gTWjyEOfKegVp6dXgJCnw/edit?usp=sharing).
 
-## Proposta
-Você deverá desenvolver um blog. Para isso, separaremos a proposta desse desafio em duas etapas:
+## Configuração e Instalação
+Siga estas etapas para configurar o projeto em seu ambiente local:
 
-### Back-end
-Desenvolva uma API utilizando Node.js que deve conter as seguintes rotas:
-- `/register` - [POST] - esta rota deve cadastrar um usuário;
-- `/login` - [POST] - esta rota deve autenticar um usuário;
-- `/posts` - [POST] - esta rota deve cadastrar uma postagem mantendo a referência do autor. (requer autenticação);
-- `/posts/{id}` - [PUT] - esta rota deve editar a postagem do ID especificado mantendo a referência do autor. (requer autenticação);
-- `/posts` - [GET] - esta rota deve retornar a lista de todas as postagens ordenadas das mais recentes para as mais antigas com a possibilidade de inverter esta ordenação e de retornar apenas as postagens do usuário que fez a requisição (requer autenticação);
-- `/posts/{id}` - [GET] - esta rota deve retornar a postagem do ID especificado com todos os seus dados  (requer autenticação);
-- `/posts/{id}` - [DELETE] - esta rota deve deletar a postagem do ID especificado.
+1. **Clone o Repositório**:
+   ```bash
+   git clone [URL do Repositório]
+   ```
 
-### Front-end
+2. **Configuração do Cliente**:
+   - Navegue até a pasta do cliente:
+     ```bash
+     cd client/
+     ```
+   - Instale as dependências:
+     ```bash
+     npm install --force
+     ```
+   - Inicie o cliente:
+     ```bash
+     npm start
+     ```
 
-**Web:** Desenvolva uma aplicação web utilizando o React.js e esta deve atender as seguintes histórias:
- - Eu como usuário desejo me cadastrar;
- - Eu como usuário desejo realizar login;
- - Eu como usuário autenticado desejo visualizar todas as postagens;
- - Eu como usuário autenticado desejo visualizar os detalhes de uma postagem;
- - Eu como usuário autenticado desejo visualizar todas as minhas postagens;
- - Eu como usuário autenticado desejo criar uma postagem;
- - Eu como usuário autenticado desejo editar uma postagem que eu criei;
- - Eu como usuário autenticado desejo deletar uma postagem que eu criei.
+3. **Configuração do Servidor**:
+   - Acesse a pasta do servidor:
+     ```bash
+     cd server
+     ```
+   - Instale as dependências do servidor:
+     ```bash
+     npm install
+     ```
+   - Inicie o servidor:
+     ```bash
+     npm run monitor
+     ```
 
-**Mobile:** Desenvolva um aplicativo utilizando o React Native tendo as mesmas funcionalidades da aplicação web.
+## Uso
+Com a aplicação rodando, ela estará vinculada ao Datastore do projeto. Acesse a aplicação através do navegador para interagir com a interface de usuário.
 
-## Diferenciais
-Consideraremos como diferenciais os seguintes pontos:
-- Deploy realizado em qualquer ambiente em nuvem;
-- Criação de testes unitários;
-- Criação de testes de integração.
+## Problemas Comuns
+- **Permissões**: Se encontrar erros de permissão, verifique as configurações de segurança do seu sistema e do projeto.
+- **Dependências**: Caso ocorram problemas com as dependências, tente limpar o cache do npm e reinstalá-las.
 
+## Contribuição
+Contribuições para o projeto são bem-vindas. Consulte as 'issues' abertas ou crie uma nova para discutir as mudanças desejadas.
 
-> **Observações:**
-> - Suas aplicaçóes web e mobile DEVEM se comunicar com sua API;
-> - Você pode utilizar o banco de dados de sua preferência (relacional ou não relacional).
+## Licença
+Este projeto está sob [inserir tipo de licença aqui].
+
+## Contato
+Para mais informações ou suporte, entre em contato através de [inserir meio de contato aqui].
+
+---
+
+*Este README foi gerado para facilitar a configuração e uso do projeto.*
