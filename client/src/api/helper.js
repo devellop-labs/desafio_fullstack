@@ -8,7 +8,7 @@ const memoryJar = new MemoryCookieStore();
 const cookieJar = new CookieJar();
 
 const api = axios.create({
-    baseURL: "http://localhost:3002",
+    baseURL: "https://devellop-labs.rj.r.appspot.com",
     withCredentials: true,
     jar: cookieJar,
 });
@@ -187,11 +187,11 @@ const encodeToBase64 = (str) => {
 
 const getOursPath = () => {
     return [
-        "/",
-        "/blog",
-        "/profile",
-        "/profile/myposts",
-        "/profile/historic",
+        "/desafio_fullstack",
+        "/desafio_fullstack/blog",
+        "/desafio_fullstack/profile",
+        "/desafio_fullstack/profile/myposts",
+        "/desafio_fullstack/profile/historic",
     ]
 }
 
